@@ -43,7 +43,7 @@ double SEIRD(double S0, double E0, double I0, double R0, double D0, int t0, doub
     double S = S0, E = E0, I = I0, R = R0, D = D0;
     double Sn, En, In;
     int i = t0;
-    int N = count_N(S, E, I, R, D);
+    int N;
     for (; i < t; i++) {
         N = count_N(S, E, I, R, D);
         Sn = S0 + h * dS(N, S0, E0, I0);
@@ -68,7 +68,7 @@ int main()
     double S0 = 2798047, E0 = 99, I0 = 0, R0 = 24, D0 = 0;
     FILE* file = fopen("data.txt", "w");
     for (int i = 1; i <= 100; i++) {
-        fprintf(file, "%d  %f\n", i, SEIRD(S0, E0, I0, R0, D0, 0, i, 1));
+        fprintf(file, "%d %f\n", i, SEIRD(S0, E0, I0, R0, D0, 0, i, 1));
     }
     fclose(file);
 }
